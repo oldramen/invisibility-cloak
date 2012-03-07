@@ -1,5 +1,6 @@
 <html>
 <head>
+<script src="js/jquery.js"></script>
 <script>
 function setDefault(key, value) { if (!localStorage[key]) localStorage[key] = value;};
 
@@ -9,7 +10,10 @@ var version = "0.1";
 if (localStorage["version"] != version) {
 	localStorage["version"] = version;
 }
-
+chrome.browserAction.onClicked.addListener(function(tab) {
+  chrome.tabs.executeScript(
+      null, {code:'$("#invisiblitycloak").toggle();'});
+});
 chrome.extension.onRequest.addListener(function (request, sender, sendResponse) {
 	switch(request.name) {
 		case "getStorage":
