@@ -1,0 +1,23 @@
+{
+  "name": "Invisibility Cloak",
+  "version": "0.1",
+  "description": "No one will ever know you're there.",
+  "update_url": "https://dl.dropbox.com/s/jzd7aj69iojxi7f/update.xml",
+  "background_page": "background.html",
+  "options_page": "options.html",
+  "content_scripts": [
+    {
+    "matches": ["*://*/*"],
+   "icons": {
+      "128": "images/icon128.png",
+      "16": "images/icon16.png",
+      "48": "images/icon48.png"
+   },
+    "js": ["js/jquery.js", "js/infuse.js"],
+    "run_at": "document_end"
+    }
+  ],
+  "permissions": [
+    "tabs"
+  ]
+}

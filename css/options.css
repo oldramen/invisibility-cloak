@@ -1,0 +1,18 @@
+BODY{	font-family: 'Bebas'; color: #222;  margin:0;   background: #fff url('../images/back.png'); }
+select {  font-family: 'Bebas'; color:#222; font-size: 22px;  height: 27px; width:225px; }
+a {  text-decoration: none;  color: #0aa; }
+textarea, input{ outline:none; }
+.contain {
+  width:500px; margin:auto; margin-top:50px;padding-bottom:20px;
+  background: #ededed; border-radius: 5px;-moz-border-radius: 5px;
+  -moz-box-shadow:0 0 25px #000;-webkit-box-shadow:0 0 25px #000;box-shadow:0 0 25px #000;
+}
+.myButton { display:inline-block;padding:8px 29px;width:350px;background:#dedede;border:1px solid #ccc;font-size:20px;margin-top:20px;}
+#title {  font-size: 24px; padding-top:10px;}
+#subtitle {  font-size: 18px; margin-bottom: 15px; }
+#form { width:400px; margin:auto; }
+#urlbox {
+    width:100%;background: #dedede;border:none;padding:5px;
+    color: #222; font-size: 30px;font-family: 'Bebas';margin-left:-4px;
+}
+
