@@ -2,11 +2,6 @@ chrome.extension.sendRequest({name: "getStorage"},	function (result) {
   var src = result.preferences["site"];
   var swishandflick = 'konami = new Konami();konami.pattern = "4545";konami.code = function() {$("#invisiblitycloak").toggle();};konami.load();'
     
-  var jqy = document.createElement("script");
-  jqy.type = 'text/javascript';
-  jqy.src = chrome.extension.getURL("js/jquery.js");
-  document.getElementsByTagName("head")[0].appendChild(jqy);
-  
   var koi = document.createElement("script");
   koi.type = 'text/javascript';
   koi.src = chrome.extension.getURL("js/konami.js");
