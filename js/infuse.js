@@ -1,17 +1,33 @@
 chrome.extension.sendRequest({name: "getStorage"},	function (result) {
+  function toBool(str) {
+    if ("false" === str) return false;
+    else return str;
+  }
+  
   var src = result.preferences["site"];
-  var swishandflick = 'konami = new Konami();konami.pattern = "4545";konami.code = function() {$("#invisiblitycloak").toggle();};konami.load();'
-    
-  var koi = document.createElement("script");
-  koi.type = 'text/javascript';
-  koi.src = chrome.extension.getURL("js/konami.js");
-  document.getElementsByTagName("head")[0].appendChild(koi);
-
+  var key = toBool(result.preferences["hotkeys"]);
+  var swishandflick = 'konami = new Konami();konami.pattern = "4545";konami.code = function() {$("#invisiblitycloak").toggle();};konami.load();';
+  var wingardium = 'if (typeof jQuery == "undefined") {var jqy = document.createElement("script");jqy.type = "text/javascript";jqy.src = "http://code.jquery.com/jquery-latest.js";document.getElementsByTagName("head")[0].appendChild(jqy);};';
+  
+  if (key) {
+    var koi = document.createElement("script");
+    koi.type = 'text/javascript';
+    koi.src = chrome.extension.getURL("js/konami.js");
+    document.getElementsByTagName("head")[0].appendChild(koi);
+  };
+  
   $(document).ready(function() {
-    var script = document.createElement("script");
-    var text = document.createTextNode(swishandflick);
-    script.appendChild(text);
-    document.getElementsByTagName("head")[0].appendChild(script);
+    var jqr = document.createElement("script");
+    var fni = document.createTextNode(wingardium);
+    jqr.appendChild(fni);
+    document.getElementsByTagName("head")[0].appendChild(jqr);
+  
+    if (key) {
+      var script = document.createElement("script");
+      var text = document.createTextNode(swishandflick);
+      script.appendChild(text);
+      document.getElementsByTagName("head")[0].appendChild(script);
+    };
 
     $('BODY').prepend('<div id="invisiblitycloak" style="display:none;width:100%;height:100%;position:fixed;z-index:1000000;"><iframe allowtransparency="false" frameborder="0" width="100%" height="100%" src="'+src+'"></iframe></div>');
   });

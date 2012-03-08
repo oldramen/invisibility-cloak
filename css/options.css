@@ -11,6 +11,7 @@ textarea, input{ outline:none; }
 #title {  font-size: 24px; padding-top:10px;}
 #subtitle {  font-size: 18px; margin-bottom: 15px; }
 #form { width:400px; margin:auto; }
+#options {  list-style-type: none; padding-left: 10px;font-size: 22px; }
 #urlbox {
     width:100%;background: #dedede;border:none;padding:5px;
     color: #222; font-size: 30px;font-family: 'Bebas';margin-left:-4px;
