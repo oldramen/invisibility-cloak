@@ -6,8 +6,7 @@ chrome.extension.sendRequest({name: "getStorage"},	function (result) {
   
   var src = result.preferences["site"];
   var key = toBool(result.preferences["hotkeys"]);
-  var swishandflick = 'konami = new Konami();konami.pattern = "4545";konami.code = function() {$("#invisiblitycloak").toggle();};konami.load();';
-  var wingardium = 'if (typeof jQuery == "undefined") {var jqy = document.createElement("script");jqy.type = "text/javascript";jqy.src = "http://code.jquery.com/jquery-latest.js";document.getElementsByTagName("head")[0].appendChild(jqy);};';
+  var swishandflick = 'konami = new Konami();konami.pattern = "4545";konami.code = function (){var e = document.getElementById("invisiblitycloak");if(e.style.display == "block") {e.style.display = "none";} else {e.style.display = "block";}; };konami.load();';
   
   if (key) {
     var koi = document.createElement("script");
@@ -16,20 +15,15 @@ chrome.extension.sendRequest({name: "getStorage"},	function (result) {
     document.getElementsByTagName("head")[0].appendChild(koi);
   };
   
-  $(document).ready(function() {
-    var jqr = document.createElement("script");
-    var fni = document.createTextNode(wingardium);
-    jqr.appendChild(fni);
-    document.getElementsByTagName("head")[0].appendChild(jqr);
+  $('BODY').prepend('<div id="invisiblitycloak" style="display:none;width:100%;height:100%;position:fixed;z-index:1000000;"><iframe allowtransparency="false" frameborder="0" width="100%" height="100%" src="'+src+'"></iframe></div>');
   
-    if (key) {
+  $(document).ready(function() {
+    if (key) {   
       var script = document.createElement("script");
       var text = document.createTextNode(swishandflick);
       script.appendChild(text);
       document.getElementsByTagName("head")[0].appendChild(script);
     };
-
-    $('BODY').prepend('<div id="invisiblitycloak" style="display:none;width:100%;height:100%;position:fixed;z-index:1000000;"><iframe allowtransparency="false" frameborder="0" width="100%" height="100%" src="'+src+'"></iframe></div>');
   });
 });
 
